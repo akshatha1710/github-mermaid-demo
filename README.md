@@ -11,8 +11,9 @@ flowchart LR
     User --> Frontend
     Frontend --> API
     API --> Database
+    API --> Cache
+    API --> Queue
 ```
-
 ---
 
 ## 🔄 Development Workflow
