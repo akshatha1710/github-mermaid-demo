@@ -1,0 +1,27 @@
+flowchart LR
+    A[Data Sources] --> B[Data Ingestion]
+    B --> C[Data Validation]
+    C --> D[Feature Engineering]
+    D --> E[Feature Store]
+
+    E --> F[Model Training]
+    F --> G[Model Validation]
+    G --> H{Performance OK?}
+
+    H -- Yes --> I[Model Registry]
+    H -- No --> F
+
+    I --> J[CI/CD Pipeline]
+    J --> K[Model Deployment]
+
+    K --> L[Online Serving]
+    K --> M[Batch Inference]
+
+    L --> N[Monitoring]
+    M --> N
+
+    N --> O[Drift Detection]
+    O --> P{Drift Detected?}
+
+    P -- Yes --> F
+    P -- No --> N
