@@ -1,0 +1,24 @@
+graph TD
+    Start((Start)) --> Init[Initialize Project<br/>npm/uv init]
+    Init --> Deps[Install SDKs<br/>@modelcontextprotocol/sdk]
+    
+    subgraph Core Logic
+    Deps --> DefineTools[Define Tools<br/>JSON Schema + Logic]
+    DefineTools --> DefineResources[Define Resources<br/>Read-only Data]
+    end
+    
+    DefineResources --> ServerInit[Initialize MCP Server Instance]
+    ServerInit --> Transport[Choose Transport Layer<br/>Stdio or HTTP/SSE]
+    
+    subgraph Testing
+    Transport --> Inspector[Run MCP Inspector]
+    Inspector --> Debug{Works?}
+    Debug -- No --> DefineTools
+    end
+    
+    Debug -- Yes --> Config[Add to Client Config<br/>claude_desktop_config.json]
+    Config --> End((Deploy & Use))
+
+    style Start fill:#f9f,stroke:#333
+    style End fill:#bbf,stroke:#333
+    style Debug fill:#fff4dd,stroke:#d4a017
