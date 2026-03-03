@@ -3,3 +3,7 @@ flowchart LR
     B --> C[Backend API]
     C --> E[Redis Cache]
     C --> D[Database]
+    D --> F[SQL Queries]
+    E --> G[Cache Hits/Misses]
+    F --> H[Data Retrieval]
+    H --> I[Data Processing]
