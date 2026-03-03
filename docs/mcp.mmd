@@ -12,6 +12,7 @@ graph TD
     ServerInit --> ClientInit[Initialize MCP Client<br/>Connect to Server]
     serverInit --> Register[Register Tools & Resources<br/>with MCP Server]
     
+    
     subgraph Testing
     Transport --> Inspector[Run MCP Inspector]
     Inspector --> Debug{Works?}
