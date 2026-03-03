@@ -1,30 +1,28 @@
 ---
-id: 5cc6d099-461c-4071-8fc9-11af34f985cb
+config:
+  layout: fixed
 ---
 flowchart LR
-    A[Data Sources] --> B[Data Ingestion]
-    B --> C[Data Validation]
-    C --> D[Feature Engineering]
-    D --> E[Feature Store]
-
-    E --> F[Model Training]
-    F --> G[Model Validation]
-    G --> H{Performance OK?}
-
-    H -- Yes --> I[Model Registry]
+    A["Data Sources"] --> B["Data Ingestion"]
+    B --> C["Data Validation"]
+    C --> D["Feature Engineering"]
+    D --> E["Feature Store"]
+    E --> F["Model Training"]
+    F --> G["Model Validation"]
+    G --> H{"Performance OK?"}
+    H -- Yes --> I["Model Registry"]
     H -- No --> F
-
-    I --> J[CI/CD Pipeline]
-    J --> K[Model Deployment]
-
-    K --> L[Online Serving]
-    K --> M[Batch Inference]
-
-    L --> N[Monitoring]
+    I --> J["CI/CD Pipeline"]
+    J --> K["Model Deployment"]
+    K --> L["Online Serving"] & M["Batch Inference"]
+    L --> N["Monitoring"]
     M --> N
-
-    N --> O[Drift Detection]
-    O --> P{Drift Detected?}
-
+    N --> O["Drift Detection"]
+    O --> P{"Drift Detected?"}
     P -- Yes --> F
     P -- No --> N
+
+     H:::Rose
+    classDef Rose stroke-width:1px, stroke-dasharray:none, stroke:#FF5978, fill:#FFDFE5, color:#8E2236
+    style E fill:#FFD600
+    style I fill:#FF6D00
