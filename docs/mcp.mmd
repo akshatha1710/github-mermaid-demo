@@ -9,15 +9,19 @@ graph TD
     
     DefineResources --> ServerInit[Initialize MCP Server Instance]
     ServerInit --> Transport[Choose Transport Layer<br/>Stdio or HTTP/SSE]
+    ServerInit --> ClientInit[Initialize MCP Client<br/>Connect to Server]
+    serverInit --> Register[Register Tools & Resources<br/>with MCP Server]
     
     subgraph Testing
     Transport --> Inspector[Run MCP Inspector]
     Inspector --> Debug{Works?}
     Debug -- No --> DefineTools
     end
+
     
     Debug -- Yes --> Config[Add to Client Config<br/>claude_desktop_config.json]
     Config --> End((Deploy & Use))
+
 
     style Start fill:#f9f,stroke:#333
     style End fill:#bbf,stroke:#333
